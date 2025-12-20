@@ -5,7 +5,7 @@
     using System.Reflection;
     using OSVersionExtension;
 
-    public class GlobalConstants
+    public static class GlobalConstants
     {
         public static readonly string OS_VERSION =
             $"{OSVersion.GetOperatingSystem()} (Build {OSVersion.GetOSVersion().Version.Major}." +

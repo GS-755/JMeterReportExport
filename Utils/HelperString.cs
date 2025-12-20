@@ -2,10 +2,15 @@
 {
     using System.Globalization;
 
-    public class StrProcessor
+    public static class HelperString
     {
         public static double ParsePercentage(string value)
         {
+            // Handle null or empty strings
+            if (string.IsNullOrEmpty(value))
+            {
+                return 0;
+            }
             // Remove the '%' character and trim any whitespace
             string cleanedValue = value.Replace("%", "").Trim();
 

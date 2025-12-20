@@ -29,11 +29,11 @@
                 // Append opened file for decorating purpose :D
                 foreach (string fileName in filePath)
                 {
-                    SheetProcessor.CsvFiles.Add(fileName);  
+                    HelperSheet.CsvFiles.Add(fileName);  
                     listBoxCsvFiles.Items.Add(Path.GetFileName(fileName));
                 }
                 // Process reading CSV files
-                SheetProcessor.ReadAllCsvFiles(filePath);   
+                HelperSheet.ReadAllCsvFiles(filePath);   
             }
         }
         // Open About dialog
@@ -56,7 +56,7 @@
             if (listBoxCsvFiles.Items != null && listBoxCsvFiles.Items.Count != 0)
             {
                 // Process exporting data to Excel 
-                string exportedFileName = SheetProcessor.ExportToExcel(
+                string exportedFileName = HelperSheet.ExportToExcel(
                     GlobalConstants.EXCEL_TEMPLATE,
                     EXPORT_PATH
                 );
@@ -82,8 +82,8 @@
             // Clear the displayed CSV file(s) 
             listBoxCsvFiles.Items.Clear();
             // Clear the data structures of the SheetProcessor
-            SheetProcessor.CsvFiles.Clear();
-            SheetProcessor.ReportNodes.Clear(); 
+            HelperSheet.CsvFiles.Clear();
+            HelperSheet.ReportNodes.Clear(); 
         }
         // Task: Open Default "Documents" folder  
         private void btnOpenExplorer_Click(object sender, EventArgs e)

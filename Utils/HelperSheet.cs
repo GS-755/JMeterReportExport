@@ -11,7 +11,7 @@
     using System.Runtime.InteropServices;
     using Excel = Microsoft.Office.Interop.Excel;
 
-    public class SheetProcessor
+    public static class HelperSheet
     {
         private static List<string> csvFiles = new List<string>();
         private static List<string> convertedFiles = new List<string>();
@@ -64,7 +64,7 @@
                             Min = csv.GetField<double>(3),
                             Max = csv.GetField<double>(4),
                             StdDev = csv.GetField<double>(5),
-                            ErrorPercentage = StrProcessor.ParsePercentage(csv.GetField(6)),
+                            ErrorPercentage = HelperString.ParsePercentage(csv.GetField(6)),
                             Throughput = csv.GetField<double>(7),
                             ReceivedKBPerSec = csv.GetField<double>(8),
                             SentKBPerSec = csv.GetField<double>(9),
