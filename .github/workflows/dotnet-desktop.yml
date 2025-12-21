@@ -17,7 +17,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       
     - name: Restore NuGet packages
-      run: msbuild path\to\YourSolution.sln /t:Restore
+      run: msbuild /t:Restore
 
     - name: Build solution (Release)
       run: msbuild /p:Configuration=Release
