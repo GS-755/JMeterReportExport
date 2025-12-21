@@ -12,7 +12,8 @@
         // Private attribute 
         private readonly string EXPORT_PATH = 
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        private readonly string EXPLORER_PATH = "C:\\Windows\\explorer.exe";
+        private readonly string EXPLORER_PATH = 
+            Environment.ExpandEnvironmentVariables("%SystemRoot%\\explorer.exe");
         // Constructor 
         public IndexForm()
         {
