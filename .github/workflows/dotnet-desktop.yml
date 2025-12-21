@@ -2,20 +2,22 @@ name: github-ci
 
 on:
   push:
-    branches: [ * ]
+    branches: ["**"]
   pull_request:
-    branches: [ main,DEVELOP ]
+    branches: [ "main", "DEVELOP" ]
 
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
+      
+    - name: Restore NuGet packages
+      run: msbuild path\to\YourSolution.sln /t:Restore
 
-    - name: Build solution
-      run: msbuild /p:Configuration=Debug
+    - name: Build solution (Release)
+      run: msbuild /p:Configuration=Release
