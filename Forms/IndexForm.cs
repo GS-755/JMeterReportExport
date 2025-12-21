@@ -14,6 +14,7 @@
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         private readonly string EXPLORER_PATH = 
             Environment.ExpandEnvironmentVariables("%SystemRoot%\\explorer.exe");
+        private MainAboutBox aboutBox = null;
         // Constructor 
         public IndexForm()
         {
@@ -40,8 +41,16 @@
         // Open About dialog
         private void mnAbout_Click(object sender, EventArgs e)
         {
-            var aboutBox = new MainAboutBox();
-            aboutBox.Show();
+            if (aboutBox == null || aboutBox.IsDisposed)
+            {
+                aboutBox = new MainAboutBox();
+                aboutBox.Show();
+            }
+            else
+            {
+                aboutBox.BringToFront();
+                aboutBox.Focus();
+            }
         }
         // Exit event
         private void mnExit_Click(object sender, EventArgs e)
