@@ -10,9 +10,10 @@
     public partial class IndexForm : Form
     {
         // Private attribute 
-        private string EXPORT_PATH = 
+        private readonly string EXPORT_PATH = 
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
+        private readonly string EXPLORER_PATH = 
+            Environment.ExpandEnvironmentVariables("%SystemRoot%\\explorer.exe");
         // Constructor 
         public IndexForm()
         {
@@ -88,7 +89,7 @@
         // Task: Open Default "Documents" folder  
         private void btnOpenExplorer_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", EXPORT_PATH);
+            Process.Start(EXPLORER_PATH, EXPORT_PATH);
         }
         /* Button event End */
     }

@@ -13,23 +13,9 @@
 
     public static class HelperSheet
     {
-        private static List<string> csvFiles = new List<string>();
-        private static List<string> convertedFiles = new List<string>();
-        private static HashSet<List<ReportNode>> reportNodes = new HashSet<List<ReportNode>>();
-
-        public static HashSet<List<ReportNode>> ReportNodes 
-        { 
-            get => reportNodes; 
-            set => reportNodes = value; 
-        }
-        public static List<string> ConvertedFiles 
-        { 
-            get => convertedFiles;
-        }
-        public static List<string> CsvFiles 
-        { 
-            get => csvFiles; 
-        }
+        public static List<string> CsvFiles { get; } = new List<string>();
+        public static List<string> ConvertedFiles { get; } = new List<string>();
+        public static HashSet<List<ReportNode>> ReportNodes { get; set; } = new HashSet<List<ReportNode>>();
 
         public static void ReadAllCsvFiles(string[] filePaths) 
         {
@@ -105,14 +91,14 @@
                         worksheet.Copy(After: workbook.Worksheets[workbook.Worksheets.Count]);
                         worksheet = workbook.Worksheets[workbook.Worksheets.Count];
                         worksheet.Name = Path.GetFileNameWithoutExtension(
-                            csvFiles[sheetIndex - 1].Trim()
+                            CsvFiles[sheetIndex - 1].Trim()
                         );
                     }
                     else
                     {
                         worksheet = workbook.Worksheets[1];
                         worksheet.Name = Path.GetFileNameWithoutExtension(
-                            csvFiles[sheetIndex - 1].Trim()
+                            CsvFiles[sheetIndex - 1].Trim()
                         );
                     }
 
