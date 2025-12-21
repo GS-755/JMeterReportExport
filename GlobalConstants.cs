@@ -12,7 +12,7 @@
             $"{OSVersion.GetOSVersion().Version.Minor}." +
             $"{OSVersion.GetOSVersion().Version.Build})";
         public static readonly string APP_NAME = "JMeter Report Export"; 
-        public static readonly string APP_VERSION = "1.0.3-final";
+        public static readonly string APP_VERSION = "1.0.4-RC2";
         public static readonly string 
             APP_COPYRIGHT = $"{DateTime.Now.Year} @GS-755. Licensed under MIT License";
         public static readonly string

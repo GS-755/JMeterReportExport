@@ -10,9 +10,11 @@
     public partial class IndexForm : Form
     {
         // Private attribute 
-        private string EXPORT_PATH = 
+        private readonly string EXPORT_PATH = 
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
+        private readonly string EXPLORER_PATH = 
+            Environment.ExpandEnvironmentVariables("%SystemRoot%\\explorer.exe");
+        private MainAboutBox aboutBox = null;
         // Constructor 
         public IndexForm()
         {
@@ -39,8 +41,16 @@
         // Open About dialog
         private void mnAbout_Click(object sender, EventArgs e)
         {
-            var aboutBox = new MainAboutBox();
-            aboutBox.Show();
+            if (aboutBox == null || aboutBox.IsDisposed)
+            {
+                aboutBox = new MainAboutBox();
+                aboutBox.Show();
+            }
+            else
+            {
+                aboutBox.BringToFront();
+                aboutBox.Focus();
+            }
         }
         // Exit event
         private void mnExit_Click(object sender, EventArgs e)
@@ -88,7 +98,7 @@
         // Task: Open Default "Documents" folder  
         private void btnOpenExplorer_Click(object sender, EventArgs e)
         {
-            Process.Start("explorer.exe", EXPORT_PATH);
+            Process.Start(EXPLORER_PATH, EXPORT_PATH);
         }
         /* Button event End */
     }
